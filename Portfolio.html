@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/icon.png">
+
+    <!-- animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- fontawsome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- main-style -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Portfolio - UpFlow Media</title>
+    <style>
+         /* Global Scrollbar Styles */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #b22222 #2c2c2c;
+    }
+
+    /* Webkit browsers (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px; /* For horizontal scrollbars */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #2c2c2c;
+      border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #b22222, #ff4444);
+      border-radius: 6px;
+      border: 3px solid #2c2c2c;
+      transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, #ff4444, #b22222);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: #2c2c2c;
+    }
+        /* Enhanced Navbar Styles */
+        .navbar {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand img {
+            width: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-item {
+            margin: 0 5px;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 5px 12px !important;
+            transition: all 0.3s ease !important;
+            font-size: 14px;
+        }
+
+        .navbar .social-icon .nav-link {
+            padding: 5px 8px !important;
+            font-size: 14px;
+        }
+
+        .navbar .social-icon i {
+            font-size: 16px;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #b22222;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 70%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #b22222 !important;
+        }
+
+        /* Enhanced Portfolio Header */
+        .portfolio-header {
+            padding: 120px 0 20px;
+            margin-bottom: 0;
+            background-color: var(--SecondBackground-background);
+        }
+
+        /* .portfolio-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/pattern.png');
+            opacity: 0.1;
+            animation: backgroundMove 20s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        } */
+
+        .portfolio-header h1 {
+            font-size: 2.5rem; 
+            margin-bottom: 0.3rem; 
+            position: relative;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-header .lead {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #b22222, #ff4444, #b22222);
+        }
+
+        footer img {
+            transition: transform 0.3s ease;
+        }
+
+        footer img:hover {
+            transform: scale(1.05);
+        }
+
+        footer h5 {
+            color: #b22222;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        footer h5:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b22222;
+        }
+
+        footer p {
+            color: #ffffff;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        footer .list-unstyled li {
+            margin-bottom: 10px;
+        }
+
+        footer .list-unstyled a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        footer .list-unstyled a:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        footer .list-unstyled a:hover {
+            opacity: 1;
+            padding-left: 20px;
+            color: #b22222;
+        }
+
+        footer .list-unstyled a:hover:before {
+            opacity: 1;
+            color: #b22222;
+        }
+
+        footer .social-links a {
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+
+            footer .social-links a:hover {
+      background: #b22222;
+      transform: translateY(-3px);
+      color: #fff !important;
+      box-shadow: 0 5px 15px rgba(178, 34, 34, 0.3);
+    }
+
+    footer .social-links a:hover i {
+      color: #fff !important;
+    }
+
+        footer i.fa-solid {
+            color: #b22222;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Toggle Button Enhancement */
+        .toggle {
+            width: 30px;
+            height: 25px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .bars {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        #bar1 { top: 0; }
+        #bar2 { top: 50%; transform: translateY(-50%); }
+        #bar3 { bottom: 0; }
+
+        #checkbox:checked + .toggle #bar1 {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        #checkbox:checked + .toggle #bar2 {
+            opacity: 0;
+        }
+
+        #checkbox:checked + .toggle #bar3 {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .portfolio-header h1 {
+                font-size: 2.5rem;
+            }
+
+            footer {
+                padding: 40px 0 20px;
+            }
+
+            .nav-item {
+                margin: 5px 0;
+            }
+        }
+
+        .nav-pills .nav-link {
+            color: white;
+            background-color: transparent;
+            border: 2px solid #b22222;
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: rgba(178, 34, 34, 0.1);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #b22222;
+            color: #fff !important;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+            border-color: #b22222;
+            font-weight: 600;
+            transform: translateY(-2px);
+        }
+
+        #portfolio-tab {
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-pills .nav-link {
+                margin: 5px;
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .social-category {
+            margin-bottom: 4rem;
+        }
+        .social-category h3 {
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        .social-category h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #b22222;
+        }
+        .portfolio-social-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            height: auto;
+            cursor: pointer;
+        }
+        .portfolio-social-item:hover {
+            transform: translateY(-5px);
+        }
+        .portfolio-social-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .portfolio-social-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(178, 34, 34, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        .portfolio-social-item:hover .portfolio-social-overlay {
+            opacity: 1;
+        }
+        .portfolio-social-overlay h4 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .portfolio-social-overlay p {
+            color: white;
+            font-size: 14px;
+        }
+        
+        /* Modal Styles */
+        .portfolio-modal .modal-content {
+            background-color: transparent;
+            border: none;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .portfolio-modal .modal-body {
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-modal .modal-dialog {
+            max-width: 90vw;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .portfolio-modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin: auto;
+        }
+        .portfolio-modal .close {
+            position: fixed;
+            right: 25px;
+            top: 25px;
+            color: white;
+            font-size: 24px;
+            z-index: 1000;
+            opacity: 1;
+            text-shadow: none;
+            background: #b22222;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            line-height: 1;
+        }
+        .portfolio-modal .close:hover {
+            background: #8b0000;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+        .modal-backdrop.show {
+            opacity: 0.9;
+        }
+
+        /* Portfolio Categories Section */
+        .portfolio-categories {
+            padding: 40px 0; /* Reduced padding */
+            background-color: #1a1a1a;
+        }
+
+        /* Updated Branding Collage Styles */
+        .branding-collage {
+            position: relative;
+            width: 100%;
+            height: 800px;
+            margin: 40px 0;
+        }
+
+        .center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            z-index: 2;
+        }
+
+        .surrounding-images {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-item {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .top-right {
+            top: 0;
+            right: 0;
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+
+        .branding-collage .portfolio-social-item {
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .branding-collage .portfolio-social-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .branding-collage .portfolio-social-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 991px) {
+            .branding-collage {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .center-image,
+            .image-item {
+                position: relative;
+                width: 100%;
+                height: 300px;
+                transform: none;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+            }
+
+            .surrounding-images {
+                position: relative;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Bottom Grid Images Styles */
+        .row.g-4.mt-4 .portfolio-social-item {
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .row.g-4.mt-4 .portfolio-social-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 991px) {
+            .row.g-4.mt-4 .portfolio-social-item {
+                height: 300px;
+            }
+        }
+
+        /* Contact Form Styles */
+        .contact-us {
+            background-color: var(--SecondBackground-background);
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-info .info-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(178, 34, 34, 0.1);
+            color: #b22222;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info .info-item:hover i {
+            background: #b22222;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            color: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form .form-control:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #b22222;
+            box-shadow: none;
+        }
+
+        .contact-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-form .btn-danger {
+            background: #b22222;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form .btn-danger:hover {
+            background: #8b0000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(178, 34, 34, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light" id="top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="images/add.png" width="100" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <input type="checkbox" id="checkbox">
+                <label for="checkbox" class="toggle">
+                    <div class="bars" id="bar1"></div>
+                    <div class="bars" id="bar2"></div>
+                    <div class="bars" id="bar3"></div>
+                </label>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0 w-100 d-flex justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html#About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" href="Portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html#services">Service</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html#orderNow">Order now</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html#ContactUs">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav social-icon gap-3 ms-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item d-flex align-items-center gap-1">
+                      <img src="images/Egypt.png" width="30" alt="">
+                      <a class="nav-link active text-white " aria-current="page" href="Arbic.html">Ar</a>
+                    </li> -->
+                    <li class="nav-item">
+                      <a class="nav-link active text-white " aria-current="page"
+                        href="#"><i
+                          class="fa-brands fa-facebook"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active text-white " aria-current="page"
+                        href="#" ><i
+                          class="fa-brands fa-instagram"></i></a>
+                    </li>
+          
+                  </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Portfolio Header -->
+    <header class="portfolio-header text-center text-white">
+        <div class="container">
+            <h1 class="fw-bold wow fadeInUp" data-wow-duration="1s">Our Portfolio</h1>
+            <p class="lead wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">Explore our creative work across different domains</p>
+        </div>
+    </header>
+
+    <!-- Portfolio Categories -->
+    <section class="portfolio-categories">
+        <div class="container">
+            <!-- Category Navigation -->
+            <ul class="nav nav-pills mb-4 justify-content-center" id="portfolio-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active wow fadeInUp" data-wow-delay="0.1s" id="social-media-tab" data-bs-toggle="pill" data-bs-target="#social-media" type="button" role="tab">Social Media Management</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link wow fadeInUp" data-wow-delay="0.2s" id="branding-tab" data-bs-toggle="pill" data-bs-target="#branding" type="button" role="tab">Branding</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link wow fadeInUp" data-wow-delay="0.3s" id="websites-tab" data-bs-toggle="pill" data-bs-target="#websites" type="button" role="tab">Websites</button>
+                </li>
+            </ul>
+
+            <!-- Category Content -->
+            <div class="tab-content" id="portfolio-tabContent">
+                <!-- Social Media Management -->
+                <div class="tab-pane fade show active" id="social-media" role="tabpanel">
+                    <!-- Khairat - Marketing Campaigns -->
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">Khairat - Marketing Campaigns</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#modalKhairat1">
+                                    <img src="images/Khairat/1st.png" alt="Khairat Campaign 1" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Khairat First Campaign</h4>
+                                        <p>Social media marketing campaign</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#modalKhairat2">
+                                    <img src="images/Khairat/Menu-3.png" alt="Khairat Menu Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Khairat Menu Design</h4>
+                                        <p>Menu and promotional content</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.3s" data-bs-toggle="modal" data-bs-target="#modalKhairat3">
+                                    <img src="images/Khairat/mn.jpg" alt="Khairat Post" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Khairat Social Post</h4>
+                                        <p>Engaging social media content</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.4s" data-bs-toggle="modal" data-bs-target="#modalKhairat4">
+                                    <img src="images/Khairat/4th.png" alt="Khairat Fourth Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Khairat Campaign</h4>
+                                        <p>Strategic marketing content</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.5s" data-bs-toggle="modal" data-bs-target="#modalKhairat5">
+                                    <img src="images/Khairat/sale.png" alt="Khairat Sale Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Khairat Sale Promotion</h4>
+                                        <p>Special offers and promotions</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.6s" data-bs-toggle="modal" data-bs-target="#modalKhairat6">
+                                    <img src="images/Khairat/,mn.png" alt="Khairat Special Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Khairat Special Feature</h4>
+                                        <p>Featured promotional content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Camera 9 - Marketing Campaigns -->
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">Camera 9 - Marketing Campaigns</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#modal1">
+                                    <img src="images/Camera 9/10%-sale-on-Games.png" alt="Games Sale Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Games Sale Campaign</h4>
+                                        <p>Special 10% discount promotion for gaming products</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#modal2">
+                                    <img src="images/Camera 9/Engagement-Post.png" alt="Engagement Post" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Social Media Engagement</h4>
+                                        <p>Interactive content to boost community engagement</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.3s" data-bs-toggle="modal" data-bs-target="#modal3">
+                                    <img src="images/Camera 9/6-october.png" alt="October Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>October Campaign</h4>
+                                        <p>Special promotional campaign for October events</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Camera 9 - Seasonal Campaigns -->
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">Camera 9 - Seasonal Campaigns</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#modal4">
+                                    <img src="images/Camera 9/Back-to-school---Mobile-size.png" alt="Back to School Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Back to School Campaign</h4>
+                                        <p>Mobile-optimized campaign for school season</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#modal5">
+                                    <img src="images/Camera 9/Create-your-own-supplies-list---PC-size----sliderr.png" alt="School Supplies Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>School Supplies List Creator</h4>
+                                        <p>Interactive campaign for customized school supplies</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Camera 9 - Special Promotions -->
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">Camera 9 - Special Promotions</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#modal6">
+                                    <img src="images/Camera 9/10%.png" alt="10% Discount Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>10% Discount Offer</h4>
+                                        <p>Special discount promotion campaign</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#modal7">
+                                    <img src="images/Camera 9/Puzzle.png" alt="Puzzle Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Puzzle Campaign</h4>
+                                        <p>Interactive puzzle-themed promotion</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.3s" data-bs-toggle="modal" data-bs-target="#modal8">
+                                    <img src="images/Camera 9/22.png" alt="Special Offer" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Featured Promotion</h4>
+                                        <p>Exclusive special offer campaign</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Swimmer - Marketing Campaigns -->
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">Top Swimmer - Marketing Campaigns</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#modalTopSwimmer1">
+                                    <img src="images/Top Swimmer/Top.png" alt="Top Swimmer Campaign" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Top Swimmer Main Campaign</h4>
+                                        <p>Brand showcase and promotion</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#modalTopSwimmer2">
+                                    <img src="images/Top Swimmer/Top-Swimmer.png" alt="Top Swimmer Brand" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Top Swimmer Brand</h4>
+                                        <p>Brand identity and marketing</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.3s" data-bs-toggle="modal" data-bs-target="#modalTopSwimmer3">
+                                    <img src="images/Top Swimmer/Heros.png" alt="Top Swimmer Heroes" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Heroes Campaign</h4>
+                                        <p>Inspirational marketing content</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.4s" data-bs-toggle="modal" data-bs-target="#modalTopSwimmer4">
+                                    <img src="images/Top Swimmer/Champion.png" alt="Top Swimmer Champion" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Champion Campaign</h4>
+                                        <p>Achievement focused promotion</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modals -->
+                    <!-- Modal 1 -->
+                    <div class="modal fade portfolio-modal" id="modal1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/10%-sale-on-Games.png" alt="Games Sale Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 2 -->
+                    <div class="modal fade portfolio-modal" id="modal2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/Engagement-Post.png" alt="Engagement Post" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 3 -->
+                    <div class="modal fade portfolio-modal" id="modal3" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/6-october.png" alt="October Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 4 -->
+                    <div class="modal fade portfolio-modal" id="modal4" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/Back-to-school---Mobile-size.png" alt="Back to School Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 5 -->
+                    <div class="modal fade portfolio-modal" id="modal5" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/Create-your-own-supplies-list---PC-size----sliderr.png" alt="School Supplies Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 6 -->
+                    <div class="modal fade portfolio-modal" id="modal6" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/10%.png" alt="10% Discount Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 7 -->
+                    <div class="modal fade portfolio-modal" id="modal7" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/Puzzle.png" alt="Puzzle Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 8 -->
+                    <div class="modal fade portfolio-modal" id="modal8" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Camera 9/22.png" alt="Special Offer" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khairat Modals -->
+                    <div class="modal fade portfolio-modal" id="modalKhairat1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Khairat/1st.png" alt="Khairat Campaign 1" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalKhairat2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Khairat/Menu-3.png" alt="Khairat Menu Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalKhairat3" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Khairat/Post-5.png" alt="Khairat Post" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalKhairat4" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Khairat/4th.png" alt="Khairat Fourth Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalKhairat5" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Khairat/sale.png" alt="Khairat Sale Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalKhairat6" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Khairat/,mn.png" alt="Khairat Special Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Swimmer Modals -->
+                    <div class="modal fade portfolio-modal" id="modalTopSwimmer1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Top Swimmer/Top.png" alt="Top Swimmer Campaign" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalTopSwimmer2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Top Swimmer/Top-Swimmer.png" alt="Top Swimmer Brand" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalTopSwimmer3" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Top Swimmer/Heros.png" alt="Top Swimmer Heroes" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="modalTopSwimmer4" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/Top Swimmer/Champion.png" alt="Top Swimmer Champion" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Branding -->
+                <div class="tab-pane fade" id="branding" role="tabpanel">
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">Khairat - Brand Identity</h3>
+                        <div class="branding-collage">
+                            <!-- Center Image -->
+                            <div class="center-image wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#brandingModal1">
+                                <div class="portfolio-social-item">
+                                    <img src="images/khairat branding/7.png" alt="Khairat Marketing Materials" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Brand Applications</h4>
+                                        <p>Marketing materials and collateral</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Surrounding Images -->
+                            <div class="surrounding-images">
+                                <div class="image-item top-left wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#brandingModal2">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/khairat branding/6.jpg" alt="Khairat Brand Assets" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Assets</h4>
+                                            <p>Core visual elements</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-item top-right wow fadeInUp" data-wow-delay="0.3s" data-bs-toggle="modal" data-bs-target="#brandingModal3">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/khairat branding/8.jpg" alt="Khairat Brand Elements" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Elements</h4>
+                                            <p>Visual identity components</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-item bottom-left wow fadeInUp" data-wow-delay="0.4s" data-bs-toggle="modal" data-bs-target="#brandingModal4">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/khairat branding/4.jpg" alt="Khairat Guidelines" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Guidelines</h4>
+                                            <p>Design system and standards</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-item bottom-right wow fadeInUp" data-wow-delay="0.5s" data-bs-toggle="modal" data-bs-target="#brandingModal5">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/khairat branding/5.png" alt="Khairat Identity" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Identity</h4>
+                                            <p>Visual brand elements</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Images in Grid -->
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.6s" data-bs-toggle="modal" data-bs-target="#brandingModal6">
+                                    <img src="images/khairat branding/2.jpg" alt="Khairat Visual Elements" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Visual Elements</h4>
+                                        <p>Brand visual language and style</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.7s" data-bs-toggle="modal" data-bs-target="#brandingModal7">
+                                    <img src="images/khairat branding/1.jpg" alt="Khairat Core Identity" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Core Identity</h4>
+                                        <p>Brand foundation elements</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.8s" data-bs-toggle="modal" data-bs-target="#brandingModal8">
+                                    <img src="images/khairat branding/3.jpg" alt="Khairat Applications" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Brand Applications</h4>
+                                        <p>Practical implementations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MAL Branding Section -->
+                    <div class="social-category">
+                        <h3 class="wow fadeInUp">MAL - Brand Identity</h3>
+                        <div class="branding-collage">
+                            <!-- Center Image -->
+                            <div class="center-image wow fadeInUp" data-wow-delay="0.1s" data-bs-toggle="modal" data-bs-target="#malModal1">
+                                <div class="portfolio-social-item">
+                                    <img src="images/mal branding/5.jpg" alt="MAL Brand Identity" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Brand Identity</h4>
+                                        <p>Core brand elements and design</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Surrounding Images -->
+                            <div class="surrounding-images">
+                                <div class="image-item top-left wow fadeInUp" data-wow-delay="0.2s" data-bs-toggle="modal" data-bs-target="#malModal2">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/mal branding/6.jpg" alt="MAL Brand Assets" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Assets</h4>
+                                            <p>Core visual elements</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-item top-right wow fadeInUp" data-wow-delay="0.3s" data-bs-toggle="modal" data-bs-target="#malModal3">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/mal branding/8.jpg" alt="MAL Brand Elements" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Elements</h4>
+                                            <p>Visual identity components</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-item bottom-left wow fadeInUp" data-wow-delay="0.4s" data-bs-toggle="modal" data-bs-target="#malModal4">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/mal branding/4.jpg" alt="MAL Guidelines" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Brand Guidelines</h4>
+                                            <p>Design system and standards</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-item bottom-right wow fadeInUp" data-wow-delay="0.5s" data-bs-toggle="modal" data-bs-target="#malModal5">
+                                    <div class="portfolio-social-item">
+                                        <img src="images/mal branding/9.jpg" alt="MAL Marketing" class="img-fluid">
+                                        <div class="portfolio-social-overlay">
+                                            <h4>Marketing Materials</h4>
+                                            <p>Brand promotional content</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Images in Grid -->
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.6s" data-bs-toggle="modal" data-bs-target="#malModal6">
+                                    <img src="images/mal branding/2.jpg" alt="MAL Visual Elements" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Visual Elements</h4>
+                                        <p>Brand visual language and style</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.7s" data-bs-toggle="modal" data-bs-target="#malModal7">
+                                    <img src="images/mal branding/10.jpg" alt="MAL Applications" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Brand Applications</h4>
+                                        <p>Practical implementations</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="portfolio-social-item wow fadeInUp" data-wow-delay="0.8s" data-bs-toggle="modal" data-bs-target="#malModal8">
+                                    <img src="images/mal branding/1.jpg" alt="MAL Identity" class="img-fluid">
+                                    <div class="portfolio-social-overlay">
+                                        <h4>Brand Identity</h4>
+                                        <p>Core identity elements</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branding Modals -->
+                    <div class="modal fade portfolio-modal" id="brandingModal1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/khairat branding/5.png" alt="Khairat Marketing Materials" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="brandingModal2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/khairat branding/6.jpg" alt="Khairat Brand Assets" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="brandingModal3" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/khairat branding/8.jpg" alt="Khairat Brand Elements" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="brandingModal6" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/khairat branding/2.jpg" alt="Khairat Visual Elements" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="brandingModal7" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/khairat branding/1.jpg" alt="Khairat Core Identity" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="brandingModal8" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/khairat branding/3.jpg" alt="Khairat Applications" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MAL Modals -->
+                    <div class="modal fade portfolio-modal" id="malModal1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/5.jpg" alt="MAL Brand Identity" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/6.jpg" alt="MAL Brand Assets" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal3" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/8.jpg" alt="MAL Brand Elements" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal4" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/4.jpg" alt="MAL Guidelines" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal5" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/9.jpg" alt="MAL Marketing" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal6" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/2.jpg" alt="MAL Visual Elements" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal7" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/10.jpg" alt="MAL Applications" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade portfolio-modal" id="malModal8" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                    <img src="images/mal branding/1.jpg" alt="MAL Identity" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Websites -->
+                <div class="tab-pane fade" id="websites" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 mb-4">
+                            <a href="https://hassaneljabalwy.com/" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/hasan.jpeg');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Hassan Eljabalwy</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://andrewgirgis099.github.io/DANIELS/" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/daniel.png');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Daniels</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://andrewgirgis099.github.io/RestaurantLandingPage/" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/Returent.png');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">foodwaGon</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://sushi-1.surge.sh/" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/food2.png');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Sushi food lovers</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://nour-cheaito.surge.sh/" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/Nour.jpeg');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Nour Cheaito</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://andrewgirgis099.github.io/Recyco-/index.html" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/Recyco.png');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Recyco</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://clinc-1.surge.sh/" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/cline.png');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Quality Care</h3>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <a href="https://bavelyhany6.github.io/Solarium/index.html" target="_blank" class="macbook">
+                                <div class="screen">
+                                    <div class="viewport" style="background-image:url('images/sularum.png');">
+                                    </div>
+                                </div>
+                                <div class="base"></div>
+                                <div class="notch"></div>
+                            </a>
+                            <h3 class="text-center text-white mt-3">Solarium</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us py-5" id="ContactUs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1s">
+                    <div class="contact-info">
+                        <h2 class="fw-bold text-white mb-4">Get in Touch</h2>
+                        <p class="text-white-50 mb-4">Ready to elevate your brand? Contact us today for creative solutions tailored to your needs.</p>
+                        <div class="info-item mb-4">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h5 class="text-white">Phone</h5>
+                                <p class="text-white-50">01121447537</p>
+                            </div>
+                        </div>
+                        <div class="info-item mb-4">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5 class="text-white">Email</h5>
+                                <p class="text-white-50">upflowmedia80@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5 class="text-white">Location</h5>
+                                <p class="text-white-50">Cairo, Egypt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s">
+                    <form class="contact-form" id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <input type="text" class="form-control" placeholder="Subject" required>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-danger">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="images/add.png" width="150" alt="UpFlow Media Logo" class="mb-3">
+                    <p>Elevating brands through creative social media management, stunning web design, and strategic digital marketing solutions. Your success story starts here.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#About">About</a></li>
+                        <li><a href="Portfolio.html">Portfolio</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#ContactUs">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+201121447537" class="text-white text-decoration-none">01121447537</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:upflowmedia80@gmail.com" class="text-white text-decoration-none">upflowmedia80@gmail.com</a></p>
+                    <div class="social-links mt-4">
+                        <a href="https://www.facebook.com/profile.php?id=61554186973609" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/upflowmedia80/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2001121447537" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- main-js -->
+    <script src="js/main.js"></script>
+</body>
+
+</html> 
