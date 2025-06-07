@@ -43,4 +43,4 @@ For any inquiries, please contact:
 
 - [Facebook](https://www.facebook.com/share/16XAM2A2gJ/)
 - [Instagram](https://www.instagram.com/upflow_.media)
-- [WhatsApp](https://wa.me/2001121447537) 
+- [WhatsApp](https://wa.me/2001121447537)
