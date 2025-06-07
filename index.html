@@ -4,20 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="images/icon.png">
+  <link rel="icon" href="./images/icon.png">
 
   <!-- animate.css -->
-  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="./css/animate.css">
 
   <!-- fontawsome -->
-  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="./css/all.min.css">
   <!-- bootstrap -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
   <!-- main-style -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
   <title>UpFlow Media</title>
-  <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <!-- External Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
       emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
@@ -630,6 +633,12 @@
       padding: 5px 12px;
       border-radius: 20px;
       font-size: 0.9rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .brand-tag:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .tech-stack {
@@ -879,6 +888,106 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(178, 34, 34, 0.3);
         }
+
+    /* Fields We Work In Styles */
+    .field-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .field-item:hover {
+      transform: translateY(-10px);
+      background: rgba(178, 34, 34, 0.1);
+    }
+
+    .field-item i {
+      transition: all 0.3s ease;
+    }
+
+    .field-item:hover i {
+      transform: scale(1.2);
+    }
+
+    /* Client Logos Section Styles */
+    .client-logos {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .logo-carousel {
+      padding: 20px 0;
+      position: relative;
+    }
+
+    .logo-slider {
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+
+    .logo-slide-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: calc(250px * 12);
+    }
+
+    .logo-item {
+      flex: 0 0 250px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .logo-item img {
+      max-height: 80px;
+      filter: grayscale(100%) brightness(200%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .logo-item:hover img {
+      filter: grayscale(0%) brightness(100%);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-250px * 6));
+      }
+    }
+
+    .logo-slide-track:hover {
+      animation-play-state: paused;
+    }
+
+    @media (max-width: 768px) {
+      .logo-item {
+        flex: 0 0 200px;
+      }
+      
+      .logo-item img {
+        max-height: 60px;
+      }
+
+      .logo-slide-track {
+        width: calc(200px * 12);
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-200px * 6));
+        }
+      }
+    }
   </style>
 </head>
 
@@ -966,13 +1075,13 @@
             <a class="nav-link active text-white " aria-current="page" href="Arbic.html">Ar</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link active text-white " aria-current="page"
-              href="#"><i
+            <a class="nav-link active text-white" aria-current="page"
+              href="https://www.facebook.com/share/16XAM2A2gJ/" target="_blank"><i
                 class="fa-brands fa-facebook"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white " aria-current="page"
-              href="#"><i
+            <a class="nav-link active text-white" aria-current="page"
+              href="https://www.instagram.com/upflow_.media?igsh=eXRrMndtOGx2anQw" target="_blank"><i
                 class="fa-brands fa-instagram"></i></a>
           </li>
 
@@ -988,8 +1097,6 @@
         <h2 class="w-75 m-auto">A marketing agency specializing in social media management, branding, and web development.</h2>
         <a href="#services"><button class="explore-btn mt-3">Discover Our Services</button></a>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
     <script>
         VANTA.NET({
             el: "#background",
@@ -1047,41 +1154,61 @@
         </div>
     </div>
 
-    <!-- Stats Section -->
+    <!-- Fields We Work In -->
     <div class="row justify-content-center py-5 bg-secBackground">
+        <div class="col-md-12 text-center mb-5">
+            <h2 class="text-title shadow-title">Fields We Excel In</h2>
+            <p class="text-white lead">Delivering excellence across diverse industries</p>
+        </div>
         <div class="col-md-10">
             <div class="row g-4 text-center">
-                <div class="col-md-3 col-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="p-4">
-                        <i class="fas fa-users text-title fs-1 mb-2"></i>
-                        <h3 class="text-white counter">100+</h3>
-                        <p class="text-white-50 mb-0">Happy Clients</p>
+                <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="field-item p-4">
+                        <i class="fas fa-dumbbell text-title fs-1 mb-3"></i>
+                        <h4 class="text-white">Gym & Fitness</h4>
+                        <p class="text-white-50">Building strong brands for fitness centers</p>
                     </div>
                 </div>
-                <div class="col-md-3 col-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="p-4">
-                        <i class="fas fa-project-diagram text-title fs-1 mb-2"></i>
-                        <h3 class="text-white counter">200+</h3>
-                        <p class="text-white-50 mb-0">Projects Completed</p>
+                <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="field-item p-4">
+                        <i class="fas fa-building text-title fs-1 mb-3"></i>
+                        <h4 class="text-white">Business</h4>
+                        <p class="text-white-50">Corporate solutions that drive growth</p>
                     </div>
                 </div>
-                <div class="col-md-3 col-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="p-4">
-                        <i class="fas fa-clock text-title fs-1 mb-2"></i>
-                        <h3 class="text-white counter">5+</h3>
-                        <p class="text-white-50 mb-0">Years Experience</p>
+                <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="field-item p-4">
+                        <i class="fas fa-tractor text-title fs-1 mb-3"></i>
+                        <h4 class="text-white">Farm & Agriculture</h4>
+                        <p class="text-white-50">Digital solutions for agricultural success</p>
                     </div>
                 </div>
-                <div class="col-md-3 col-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="p-4">
-                        <i class="fas fa-award text-title fs-1 mb-2"></i>
-                        <h3 class="text-white counter">50+</h3>
-                        <p class="text-white-50 mb-0">Awards Won</p>
+                <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="field-item p-4">
+                        <i class="fas fa-futbol text-title fs-1 mb-3"></i>
+                        <h4 class="text-white">Sports Clubs</h4>
+                        <p class="text-white-50">Engaging sports community management</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="field-item p-4">
+                        <i class="fas fa-microchip text-title fs-1 mb-3"></i>
+                        <h4 class="text-white">Technology</h4>
+                        <p class="text-white-50">Innovative tech-focused solutions</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="field-item p-4">
+                        <i class="fas fa-pen-fancy text-title fs-1 mb-3"></i>
+                        <h4 class="text-white">Stationery</h4>
+                        <p class="text-white-50">Creative designs for stationery brands</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+   
 
     <!-- Why Choose Us -->
     <div class="row align-items-center py-5 px-2">
@@ -1397,6 +1524,68 @@
  </div>
 </section>
 
+ <!-- Client Logos Section -->
+ <div class="client-logos py-5 bg-secBackground">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-12 text-center mb-4">
+              <h2 class="text-title shadow-title">Trusted By</h2>
+              <p class="text-white lead">Companies that believe in our expertise</p>
+          </div>
+      </div>
+      <div class="logo-carousel">
+          <div class="logo-slider">
+              <div class="logo-slide-track">
+                  <!-- Original set -->
+                  <div class="logo-item">
+                      <img src="images/logos/5.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/6.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/7.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/1.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/8.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/9.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/10.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <!-- Duplicate set for seamless scrolling -->
+                  <div class="logo-item">
+                      <img src="images/logos/5.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/6.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/7.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/1.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/8.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/9.png" alt="Client Logo" class="img-fluid">
+                  </div>
+                  <div class="logo-item">
+                      <img src="images/logos/10.png" alt="Client Logo" class="img-fluid">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
     <!-- Testimonials -->
   <section class="testimonials py-5">
     <div class="container">
@@ -1545,8 +1734,8 @@
           <p><i class="fas fa-phone"></i> <a href="tel:+201121447537" class="text-white text-decoration-none">01121447537</a></p>
           <p><i class="fas fa-envelope"></i> <a href="mailto:upflowmedia80@gmail.com" class="text-white text-decoration-none">upflowmedia80@gmail.com</a></p>
           <div class="social-links mt-4">
-            <a href="https://www.facebook.com/profile.php?id=61554186973609" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/upflowmedia80/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/16XAM2A2gJ/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/upflow_.media?igsh=eXRrMndtOGx2anQw" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/2001121447537" target="_blank"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
